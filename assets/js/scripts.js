@@ -32,7 +32,7 @@
     }
 
     // let date = "Sep 02, 2021 15:30:00",
-    let date = "Aug 24, 2021 17:37:00",
+    let date = "Aug 24, 2021 17:40:00",
         countDown = new Date(date).getTime(),
         x = setInterval(function() {
 
