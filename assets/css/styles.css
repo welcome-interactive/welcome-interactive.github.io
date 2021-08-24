@@ -67,6 +67,12 @@ li div {
     padding: 1vw;
 }
 
+#message {
+    display: none;
+    margin-top: 10px;
+    justify-content: center;
+}
+
 @supports (-webkit-text-stroke: .5px black) {
     li span {
         -webkit-text-fill-color: #2f87de;
