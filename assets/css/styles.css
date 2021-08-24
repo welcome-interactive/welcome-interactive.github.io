@@ -24,6 +24,7 @@ body {
     position: fixed;
     width: 100vw;
     top: 0px;
+    padding: 5% 0;
 }
 
 ul {
@@ -48,13 +49,15 @@ li span {
     font-size: 4.5rem;
     color: #2f87de;
     background-color: #ffee21;
-    border: .5px solid black;
+    border: 1px solid black;
+    padding: 1vw;
 }
 
 li div {
     margin-top: 5px;
     background-color: #ffee21;
-    border: .5px solid black;
+    border: 1px solid black;
+    padding: 1vw;
 }
 
 @supports (-webkit-text-stroke: .5px black) {
@@ -73,7 +76,7 @@ li div {
 @media all and (max-width: 768px) {
     li {
         font-size: 4vw;
-        padding: .75rem;
+        padding: 0 2vw;
     }
     li span {
         font-size: 10vw;
