@@ -21,13 +21,9 @@ body {
 .container {
     color: black;
     margin: 0 auto;
-    background-color: #ffee21;
-    border: .5px solid black;
-    border-left: none;
-    border-right: none;
     position: fixed;
     width: 100vw;
-    top: 10px;
+    top: 0px;
 }
 
 ul {
@@ -51,6 +47,14 @@ li span {
     display: block;
     font-size: 4.5rem;
     color: #2f87de;
+    background-color: #ffee21;
+    border: .5px solid black;
+}
+
+li div {
+    margin-top: 5px;
+    background-color: #ffee21;
+    border: .5px solid black;
 }
 
 @supports (-webkit-text-stroke: .5px black) {
