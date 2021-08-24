@@ -49,6 +49,7 @@ li span {
     font-size: 4.5rem;
     color: #2f87de;
     background-color: #ffee21;
+    background: linear-gradient(275deg, rgba(255, 255, 255, 1) 0%, rgb(253, 255, 133) 100%);
     border: 1px solid black;
     padding: 1vw;
 }
@@ -56,6 +57,7 @@ li span {
 li div {
     margin-top: 5px;
     background-color: #ffee21;
+    background: linear-gradient(275deg, rgba(255, 255, 255, 1) 0%, rgb(253, 255, 133) 100%);
     border: 1px solid black;
     padding: 1vw;
 }
