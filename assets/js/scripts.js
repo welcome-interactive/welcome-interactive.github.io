@@ -43,8 +43,7 @@
     const isConstantMode = urlParams.get('c') !== "y";
 
     if (isConstantMode) {
-        // let date = "Sep 02, 2021 15:30:00",
-        let date = "Aug 25, 2021 08:26:30",
+        let date = "Sep 02, 2021 15:30:00",
             countDown = new Date(date).getTime(),
             x = setInterval(function() {
                 let now = new Date().getTime(),
