@@ -1,9 +1,17 @@
 html {
-    background: url(../gif/all-hands.gif) no-repeat center center fixed;
+    background: url(../gif/static-all-hands.jpg) no-repeat center center fixed;
+    background-image: url(../gif/all-hands.gif);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+@media all and (min-width: 768px) {
+    html {
+        background-repeat: repeat;
+        background-size: contain;
+    }
 }
 
 canvas {

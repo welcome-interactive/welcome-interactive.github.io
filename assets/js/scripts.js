@@ -7,43 +7,46 @@
     const blastConfetti = (isConstant) => {
         var duration = 30 * 1000;
         var end = Date.now() + duration;
-
         (function frame() {
-            // launch a few confetti from the left edge
             confetti({
                 particleCount: 7,
-                angle: 60,
-                spread: 55,
+                angle: 50,
+                startVelocity: 70,
+                spread: 30,
                 origin: { x: 0, y: 0.7 }
             });
-            // and launch a few from the right edge
             confetti({
                 particleCount: 7,
-                angle: 120,
-                spread: 55,
+                angle: 130,
+                startVelocity: 70,
+                spread: 30,
                 origin: { x: 1, y: 0.7 }
             });
-
-            // keep going until we are out of time
-            if (!isConstant) {
+            if (isConstant) {
+                requestAnimationFrame(frame);
+            } else {
                 if (Date.now() < end) {
                     requestAnimationFrame(frame);
                 }
-            } else {
-                requestAnimationFrame(frame);
             }
         }());
+    }
+    const setZero = () => {
+        document.getElementById("days").innerText = 0
+        document.getElementById("hours").innerText = 0
+        document.getElementById("minutes").innerText = 0
+        document.getElementById("seconds").innerText = 0
+        countdown = document.getElementById("countdown");
     }
 
     const urlParams = new URLSearchParams(window.location.search);
     const isConstantMode = urlParams.get('c') !== "y";
 
     if (isConstantMode) {
-        let date = "Sep 02, 2021 15:30:00",
-            // let date = "Aug 24, 2021 17:40:00",
+        // let date = "Sep 02, 2021 15:30:00",
+        let date = "Aug 25, 2021 08:26:30",
             countDown = new Date(date).getTime(),
             x = setInterval(function() {
-
                 let now = new Date().getTime(),
                     distance = countDown - now;
 
@@ -53,11 +56,7 @@
                     document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
                 if (distance < 0) {
-                    document.getElementById("days").innerText = 0
-                    document.getElementById("hours").innerText = 0
-                    document.getElementById("minutes").innerText = 0
-                    document.getElementById("seconds").innerText = 0
-                    countdown = document.getElementById("countdown");
+                    setZero();
                     var message = document.getElementById("message");
                     message.style.display = "flex"
                     clearInterval(x);
@@ -65,19 +64,12 @@
                 }
             }, 0)
     } else {
-        document.getElementById("days").innerText = 0
-        document.getElementById("hours").innerText = 0
-        document.getElementById("minutes").innerText = 0
-        document.getElementById("seconds").innerText = 0
+        setZero();
         countdown = document.getElementById("countdown");
         blastConfetti(true);
     }
-
-
-
     var myCanvas = document.createElement('canvas');
     var ticker = true;
-
     myCanvas.addEventListener('click', () => {
         var config = {
             particleCount: 25,
@@ -91,7 +83,6 @@
         }
         ticker = !ticker;
         myConfetti(config);
-
     })
     document.body.appendChild(myCanvas);
     var myConfetti = confetti.create(myCanvas, {
