@@ -4,7 +4,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-    const blastConfetti = () => {
+    const blastConfetti = (isConstant) => {
         var duration = 30 * 1000;
         var end = Date.now() + duration;
 
@@ -25,38 +25,55 @@
             });
 
             // keep going until we are out of time
-            if (Date.now() < end) {
+            if (!isConstant) {
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            } else {
                 requestAnimationFrame(frame);
             }
         }());
     }
 
-    let date = "Sep 02, 2021 15:30:00",
-        // let date = "Aug 24, 2021 17:40:00",
-        countDown = new Date(date).getTime(),
-        x = setInterval(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isConstantMode = urlParams.get('c') !== "y";
 
-            let now = new Date().getTime(),
-                distance = countDown - now;
+    if (isConstantMode) {
+        let date = "Sep 02, 2021 15:30:00",
+            // let date = "Aug 24, 2021 17:40:00",
+            countDown = new Date(date).getTime(),
+            x = setInterval(function() {
 
-            document.getElementById("days").innerText = Math.floor(distance / (day)),
-                document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-                document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+                let now = new Date().getTime(),
+                    distance = countDown - now;
 
-            if (distance < 0) {
-                document.getElementById("days").innerText = 0
-                document.getElementById("hours").innerText = 0
-                document.getElementById("minutes").innerText = 0
-                document.getElementById("seconds").innerText = 0
-                countdown = document.getElementById("countdown");
-                var message = document.getElementById("message");
-                // countdown.style.display = "none";
-                message.style.display = "flex"
-                clearInterval(x);
-                blastConfetti();
-            }
-        }, 0)
+                document.getElementById("days").innerText = Math.floor(distance / (day)),
+                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+                    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+                    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+                if (distance < 0) {
+                    document.getElementById("days").innerText = 0
+                    document.getElementById("hours").innerText = 0
+                    document.getElementById("minutes").innerText = 0
+                    document.getElementById("seconds").innerText = 0
+                    countdown = document.getElementById("countdown");
+                    var message = document.getElementById("message");
+                    message.style.display = "flex"
+                    clearInterval(x);
+                    blastConfetti();
+                }
+            }, 0)
+    } else {
+        document.getElementById("days").innerText = 0
+        document.getElementById("hours").innerText = 0
+        document.getElementById("minutes").innerText = 0
+        document.getElementById("seconds").innerText = 0
+        countdown = document.getElementById("countdown");
+        blastConfetti(true);
+    }
+
+
 
     var myCanvas = document.createElement('canvas');
     var ticker = true;
