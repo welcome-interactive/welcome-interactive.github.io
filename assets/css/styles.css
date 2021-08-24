@@ -1,14 +1,49 @@
-html {
-    background: url(../gif/static-all-hands.jpg) no-repeat center center fixed;
-    background-image: url(../gif/all-hands.gif);
+html:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+    background: url('../jpg/static-all-hands.jpg') no-repeat bottom center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+html:not(.loaded):before {
+    background: url('../jpg/static-all-hands.jpg') no-repeat bottom center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+html.loaded:before {
+    background-image: url(../gif/all-hands.gif);
+}
+
+html {
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @media all and (min-width: 768px) {
-    html {
+    html:before {
+        background-repeat: repeat;
+        background-size: contain;
+    }
+    html:not(.loaded):before {
         background-repeat: repeat;
         background-size: contain;
     }

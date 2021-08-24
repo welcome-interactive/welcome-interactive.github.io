@@ -1,4 +1,19 @@
 (function() {
+
+    function load(src) {
+        return new Promise(function(resolve, reject) {
+            const image = new Image();
+            image.addEventListener('load', resolve);
+            image.addEventListener('error', reject);
+            image.src = src;
+        });
+    }
+
+    const image = './assets/gif/all-hands.gif';
+    load(image).then(() => {
+        document.querySelector('html').classList.add('loaded');
+    });
+
     const second = 1000,
         minute = second * 60,
         hour = minute * 60,
@@ -69,7 +84,7 @@
     }
     var myCanvas = document.createElement('canvas');
     var ticker = true;
-    myCanvas.addEventListener('click', () => {
+    document.body.addEventListener('click', () => {
         var config = {
             particleCount: 25,
             angle: 60,
