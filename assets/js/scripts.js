@@ -25,4 +25,26 @@
             }
             //seconds
         }, 0)
+
+    var myCanvas = document.createElement('canvas');
+
+    myCanvas.addEventListener('click', () => {
+        myConfetti({
+            particleCount: 100,
+            spread: 150,
+            origin: {
+                x: 0.5,
+                y: 0.55
+            }
+        });
+
+    })
+    document.body.appendChild(myCanvas);
+    var myConfetti = confetti.create(myCanvas, {
+        resize: true,
+        useWorker: true
+    });
+
+
+
 }());
