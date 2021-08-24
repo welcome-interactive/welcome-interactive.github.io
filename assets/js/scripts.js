@@ -31,8 +31,8 @@
         }());
     }
 
-    // let date = "Sep 02, 2021 15:30:00",
-    let date = "Aug 24, 2021 17:40:00",
+    let date = "Sep 02, 2021 15:30:00",
+        // let date = "Aug 24, 2021 17:40:00",
         countDown = new Date(date).getTime(),
         x = setInterval(function() {
 
@@ -62,21 +62,15 @@
     var ticker = true;
 
     myCanvas.addEventListener('click', () => {
-        var config;
+        var config = {
+            particleCount: 25,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0, y: 0.7 }
+        }
         if (ticker) {
-            config = {
-                particleCount: 7,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0, y: 0.7 }
-            }
-        } else {
-            config = {
-                particleCount: 7,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1, y: 0.7 }
-            }
+            config.origin.x = 1;
+            config.angle = 120;
         }
         ticker = !ticker;
         myConfetti(config);
